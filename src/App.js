@@ -72,7 +72,7 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <h1>Game Play</h1>
+        <h1>Guessing Game</h1>
         <h5>Hint: {correctWord.slice(0,3)}</h5>
       </nav>
       <AppContext.Provider
