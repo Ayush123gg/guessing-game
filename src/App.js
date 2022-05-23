@@ -12,8 +12,9 @@ function App() {
   const [currAttempt, setCurrAttempt] = useState({ attempt: 0, letter: 0 });
   const [wordSet, setWordSet] = useState(new Set());
   const [correctWord, setCorrectWord] = useState("");
+  const [level, setLevel] = useState("1");
   const [disabledLetters, setDisabledLetters] = useState([]);
-  
+
   const [gameOver, setGameOver] = useState({
     gameOver: false,
     guessedWord: false,
@@ -73,7 +74,30 @@ function App() {
     <div className="App">
       <nav>
         <h1>Guessing Game</h1>
-        <h5>Hint: {correctWord.slice(0,3)}</h5>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h5 style={{ marginRight: 20 }}>
+            Hint:{" "}
+            {level === "1"
+              ? correctWord.slice(0, 3)
+              : level === "2"
+              ? correctWord.slice(0, 2)
+              : level === "3"
+              ? correctWord.slice(0, 1)
+              : null}
+          </h5>
+          <select onChange={(e) => setLevel(e.target.value)}>
+            <option value="1">Level 1</option>
+            <option value="2">Level 2</option>
+            <option value="3">Level 3</option>
+            <option value="4">Level 4</option>
+          </select>
+        </div>
       </nav>
       <AppContext.Provider
         value={{
